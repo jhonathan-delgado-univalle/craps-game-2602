@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/22">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.crapsgame2602.controllers.GameController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -37,16 +37,16 @@
             </Button>
          </children>
       </HBox>
-      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-border-color: black;" GridPane.rowIndex="1">
+      <VBox fx:id="vBoxGameZone" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0" style="-fx-border-color: black;" GridPane.rowIndex="1">
          <children>
             <Label text="Zona de Juego" />
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                <children>
-                  <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="dice1ImageView" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
                   <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </HBox>
-            <Button mnemonicParsing="false" text="Jugar" />
+            <Button mnemonicParsing="false" onAction="#onActionPlayButton" text="Jugar" />
          </children>
       </VBox>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0" style="-fx-border-color: black;" GridPane.columnIndex="1" GridPane.rowIndex="1">
@@ -96,6 +96,6 @@
             </GridPane>
          </children>
       </VBox>
-      <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="2" />
+      <TextArea fx:id="summaryTextArea" onKeyTyped="#onKeyTypedSummaryTextArea" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="2" />
    </children>
 </GridPane>
