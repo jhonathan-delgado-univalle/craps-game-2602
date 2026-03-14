@@ -1,9 +1,10 @@
 package com.example.crapsgame2602.controllers;
 
-import com.example.crapsgame2602.models.AlertBox;
+import com.example.crapsgame2602.models.Player;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -23,6 +24,16 @@ public class GameController {
     private TextArea summaryTextArea;
 
     private boolean dado = true;
+
+    private Player currentPlayer;
+
+    @FXML
+    Label playerNameLabel;
+
+    public void setCurrentPlayer(Player p){
+        currentPlayer = p;
+        playerNameLabel.setText(currentPlayer.getName());
+    }
 
     @FXML
     public void onActionPlayButton(ActionEvent event){
@@ -48,11 +59,5 @@ public class GameController {
                 }
         );
         vBoxGameZone.getChildren().add(textField);
-    }
-
-    @FXML
-    void onKeyTypedSummaryTextArea(KeyEvent event) {
-        System.out.println("Character: " + event.getCharacter());
-
     }
 }
