@@ -46,7 +46,7 @@
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                <children>
                   <ImageView fx:id="dice1ImageView" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="dice2ImageView" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </HBox>
             <Button mnemonicParsing="false" onAction="#onActionPlayButton" text="Jugar" />
@@ -104,6 +104,6 @@
             </GridPane>
          </children>
       </VBox>
-      <TextArea fx:id="summaryTextArea" onKeyTyped="#onKeyTypedSummaryTextArea" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="2" />
+      <TextArea fx:id="summaryTextArea" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="2" />
    </children>
 </GridPane>

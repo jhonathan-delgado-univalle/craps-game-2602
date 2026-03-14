@@ -1,5 +1,6 @@
 package com.example.crapsgame2602.controllers;
 
+import com.example.crapsgame2602.models.Game;
 import com.example.crapsgame2602.models.Player;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -18,7 +19,7 @@ public class GameController {
     private VBox vBoxGameZone;
 
     @FXML
-    private ImageView dice1ImageView;
+    private ImageView dice1ImageView, dice2ImageView;
 
     @FXML
     private TextArea summaryTextArea;
@@ -26,38 +27,28 @@ public class GameController {
     private boolean dado = true;
 
     private Player currentPlayer;
+    private Game game;
 
     @FXML
     Label playerNameLabel;
 
     public void setCurrentPlayer(Player p){
         currentPlayer = p;
+        game = new Game(currentPlayer);
         playerNameLabel.setText(currentPlayer.getName());
     }
 
     @FXML
     public void onActionPlayButton(ActionEvent event){
-        String summary = summaryTextArea.getText();
-        // new AlertBox().showAlertBox("Saludo", "FPOE Gr02", "Hola " + summary);
-        if (dado){
-            dice1ImageView.setImage(new Image(
-                getClass().getResourceAsStream("/com/example/crapsgame2602/images/dado_5.png")
-                ));
-        } else {
-            dice1ImageView.setImage(new Image(
-                    getClass().getResourceAsStream("/com/example/crapsgame2602/images/dado_6.png")
-            ));
-        }
-        dado = !dado;
-        TextField textField = new TextField();
-        textField.setOnKeyTyped(
-                new EventHandler<KeyEvent>() {
-                    @Override
-                    public void handle(KeyEvent keyEvent) {
-                        System.out.println(keyEvent.getTarget() + " : " + keyEvent.getCharacter());
-                    }
-                }
-        );
-        vBoxGameZone.getChildren().add(textField);
+        int drop = game.diceRolls();
+        String dice1ImagePath = game.getDiceImagePath(1);
+        String dice2ImagePath = game.getDiceImagePath(2);
+
+        dice1ImageView.setImage(new Image(
+                getClass().getResourceAsStream(dice1ImagePath)
+        ));
+        dice2ImageView.setImage(new Image(
+                getClass().getResourceAsStream(dice2ImagePath)
+        ));
     }
 }
